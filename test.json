@@ -1,0 +1,25 @@
+{
+  "testEnvironment": "node",
+  "collectCoverage": true,
+  "coverageThreshold": {
+    "global": {
+      "branches": 85,
+      "functions": 85,
+      "lines": 85,
+      "statements": 85
+    }
+  },
+  "collectCoverageFrom": [
+    "core/**/*.js",
+    "!config/**/*.js",
+    "!test/mocks/**/*.js",
+    "!build/**/*.js",
+    "!coverage/**/*.js"
+  ],
+  "testMatch": [
+    "**/?(*.)(spec).js?(x)"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules"
+  ]
+}
