@@ -8,12 +8,19 @@
 const fs = require('fs');
 
 const lines = () => {
-  return new Promise(resolve => {
-    const data = await fs.readFileSync('../../../access.log'),
-    res = data.toString().split('\n').length,
-    result = res - 1
-    resolve(result)
+  return new Promise(async (resolve, reject) => {
+    try {
+      const rootFolder = process.cwd(),
+        data = await fs.readFileSync(`${rootFolder}/access.log`),
+        res = data.toString().split('\n').length,
+        result = res - 1
+      resolve(result)
+    } catch (err) {
+      reject(err);
+    }
   })
 }
 
-module.exports = lines
+module.exports = {
+  lines
+}

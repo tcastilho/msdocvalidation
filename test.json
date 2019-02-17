@@ -3,18 +3,16 @@
   "collectCoverage": true,
   "coverageThreshold": {
     "global": {
-      "branches": 85,
-      "functions": 85,
-      "lines": 85,
-      "statements": 85
+      "branches": 45,
+      "functions": 45,
+      "lines": 45,
+      "statements": 45
     }
   },
   "collectCoverageFrom": [
-    "core/**/*.js",
+    "api/core/**/*.js",
     "!config/**/*.js",
-    "!test/mocks/**/*.js",
-    "!build/**/*.js",
-    "!coverage/**/*.js"
+    "!database/**/*.js"
   ],
   "testMatch": [
     "**/?(*.)(spec).js?(x)"

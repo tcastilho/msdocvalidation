@@ -7,9 +7,11 @@
  * @param {Object} res 
  */
 
-const statusBO = require('../core/business-operation/status-bo');
+const statusBO = require('../core/business-operation/status-bo'),
+  logger = require('../helpers/utils/logger').accesslog;
 
 const controller = async (req, res) => {
+  logger.info('statusController')
   try {
     const result = await statusBO.status()
     return res.status(200).json(result)

@@ -7,10 +7,10 @@
 
 const express = require('express'),
   http = require('http'),
-  search = require('./routes/search-route');
-  blacklist = require('./routes/blacklist-route');
-  whitelist = require('./routes/whitelist-route');
-  status = require('./routes/status-route');
+  search = require('./api/routes/search-route'),
+  blacklist = require('./api/routes/blacklist-route'),
+  whitelist = require('./api/routes/whitelist-route'),
+  status = require('./api/routes/status-route');
 
 const app = express();
 
@@ -18,7 +18,7 @@ const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || '8080';
 app.set('port', port);
 
-app.use('/search', search);
+app.use('/document', search);
 app.use('/blacklist', blacklist);
 app.use('/whitelist', whitelist);
 app.use('/status', status);

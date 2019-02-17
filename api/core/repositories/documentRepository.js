@@ -1,19 +1,27 @@
+/**
+ * @description Class responsible for all queries in database
+ * 
+ * @author Thiago Castilho
+ * @date 2019-02-17
+ */
 const db = require('../../../config'),
   status = require('../../helpers/enums')
 
 class Queries {
 
-  findDocument = doc => {
+  // Return only specified document number
+  findDocument(doc) {
     return new Promise((resolve, reject) => {
       db.find({document: doc}, (err, doc) => {
         if (err)
-          reject(err)
+          reject(status.error)
         resolve(doc)
       })
     })
   }
 
-  updateBlacklisted = doc => {
+  // Update or insert the document number, with status Blacklist
+  updateBlacklisted(doc) {
     return new Promise((resolve, reject) => {
       db.update({
         document: doc
@@ -24,13 +32,14 @@ class Queries {
         upsert: true
       }, (err, doc) => {
         if (err)
-          reject(err)
+          reject(status.error)
         resolve(doc)
       })
     })
   }
 
-  updateWhitelisted = doc => {
+  // Update or insert the document number, with status Whitelist
+  updateWhitelisted(doc) {
     return new Promise((resolve, reject) => {
       db.update({
         document: doc
@@ -41,17 +50,18 @@ class Queries {
         upsert: true
       }, (err, doc) => {
         if (err)
-          reject(err)
+          reject(status.error)
         resolve(doc)
       })
     })
   }
 
-  countBlacklisted = () => {
+  // Count all documents with status Blacklist
+  countBlacklisted() {
     return new Promise((resolve, reject) => {
       db.count({status: status.blacklist}, (err, doc) => {
         if (err)
-          reject(err)
+          reject(status.error)
         resolve(doc)
       })
     })

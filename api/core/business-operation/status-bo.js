@@ -6,18 +6,19 @@
  */
 
 const log = require('../business-rules/status/read-log'),
-  blacklistCount = require('')
+  queries = require('../repositories/documentRepository'),
+  Queries = new queries()
 
 const status = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const accessCount = await log.lines();
-
-      const resultObj = {
-        uptime: process.uptime(),
-        access: accessCount,
-        blacklist: blacklistCount
-      }
+      const accessCount = await log.lines(),
+        countBlacklisted = await Queries.countBlacklisted(),
+        resultObj = {
+          uptime: process.uptime(),
+          access: accessCount,
+          blacklist: countBlacklisted
+        }
       resolve(resultObj)
     } catch (err) {
       reject(err)

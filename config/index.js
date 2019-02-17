@@ -7,4 +7,4 @@
 
 const Datastore = require('nedb')
 
-module.exports = new Datastore({ filename: '../database/castilho.db', autoload: true })
+module.exports = new Datastore({ filename: '../database/documentsStatus.db', autoload: true })
